@@ -85,11 +85,12 @@ y0{[ 9..16]}{[ 9..16]} := yr^rho;;
 y0{[17..24]}{[17..24]} := yr;;
 
 O8 := Group( x0,  y0 );;                     ## O8+(2) in its 24-dim representation
-Size(O8);   #  174182400                    
-O8_3 := Group( x0, y0, rho0 );;              ## O8+(2):3 in its 24-dim representation
-Size(O8_3); #  522547200                    
+Size(O8);   #  174182400                     ## = |O8+(2)|
 
-StructureDescription(O8_3);                 
+O8_3 := Group( x0, y0, rho0 );;              ## O8+(2):3 in its 24-dim representation
+Size(O8_3); #  522547200                     ## = |O8+(2):3|
+
+StructureDescription(O8_3); 
 # "O+(8,2) : C3"                             ## the required structure
 
 C_rho := Centralizer( O8, rho0 );;           
