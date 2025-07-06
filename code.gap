@@ -7,9 +7,9 @@
 ##
 ##  Date: July, 2025
 
-##  Every section of the following code can be copy-pasted into a working GAP session
-##  The output of a command is given after a single '#' 
-##  A comment is given after a double '#' 
+##  Every section of the following code can be copy-pasted into a working GAP session.
+##  The output of a command is given after a single '#'. 
+##  A comment is given after a double '#'. 
 
 ###  
 ##  Section 1.  S = O8+(2)
@@ -123,12 +123,12 @@ Order( tau );  # 3
 Size( Centralizer( O8, tau ) ); # 216        ## => τ is the required nontriality automorphism
 
 Size( Group( tau, tau^x0 ) ); # 522547200    ## = |O8+(2):3|  =>  α_S(τ) ⩽ 2
-
-## Clearly, we also have  α_S(τ) ⩾ 2 
+                                             ## Clearly, we also have  α_S(τ) ⩾ 2 
 
 ## Conclusion: α_S(τ) = 2, where S = O8+(2), τ = nontriality 
 ###
 
+###
 ## Section 2. S = O8+(3)
 
 ##  We prove that α_S(ρ) = 3, where ρ is a triality automorphism of S 
@@ -164,7 +164,7 @@ C_rho := Centralizer( O8, rho );;            ## C_S(ρ), where S = O8+(3)
 Size( C_rho );  #  4245696                   ## = |G2(3)|  =>  ρ is indeed a triality automorphism of O8+(3)
 
 O8_3 := Group( rho, rho^x, rho^y );;
-Size( O8_3 ); #  14856539443200              ## = |O8+(3):8| => this is indeed O8+(2):3
+Size( O8_3 ); #  14856539443200              ## = |O8+(3):3| => this is indeed O8+(3):3
                                              ## This also confirms that  α_S(ρ) ⩽ 3, where S = O8+(3)
 
 Conj_rho := ConjugacyClass( O8_3, rho );;
@@ -181,4 +181,23 @@ Set( Orbs, Orb -> Size(
 
 ## Conclusion: Any two conjugates of ρ generate a {2,3}-subgroup of O8+(3):3
 ##             In particular, α_S(ρ) = 3, where  S = O8+(3)
+
+
+##  We now prove that α_S(τ) = 2, where τ is a nontriality, 
+##  i.e. τ ∊ Sρ has order 3 and τ is not conjugate to ρ.
+
+tau := (rho * x^4 * y)^4;;                   ## τ
+
+Order(tau);   # 3                            ## |τ| = 3
+
+C_tau := Centralizer(O8, tau);;
+Size(C_tau); # 5832                          ## => τ is the required nontriality automorphism
+
+Size( Group( tau, tau^x ) ); 
+# 14856539443200                             ## = |O8+(3):3| =>  α_S(τ) ⩽ 2
+                                             ## Clearly, we also have  α_S(τ) ⩾ 2 
+
+## Conclusion: α_S(τ) = 2,  where S = O8+(3)
 ###
+
+### END ###
