@@ -61,12 +61,12 @@ yr := [[1,0,0,0,0,0,0,0],
        [0,0,0,0,0,0,1,0],
        [0,0,0,0,0,0,0,1]]*Z(2)^0;;
 
-G := Group(x,y);                              ##  O8+(2)  ( 8-dimensional representation )
+G := Group(x,y);;                             ##  O8+(2)  ( 8-dimensional representation )
 
 rho := GroupHomomorphismByImages( 
        G, G, [ x, y ], [ xr, yr ] );;         ## a triality automorphism of O8+(2) ( abstract )
 
-## Constructing the induced 24-dimensional representation of O8+(2):3 
+## Constructing the induced 24-dimensional representation of O8+(2):3 :
 
 rho0 := KroneckerProduct( 
   PermutationMat( (1,2,3), 3, GF(2) ), 
@@ -99,16 +99,18 @@ Size( C_rho );   # 12096                     ## = |G2(2)|  =>  ρ is indeed the 
 Group( rho0, rho0^x0, rho0^y0 ) = O8_3; 
 # true                                       ## This confirms that α_S(ρ) ⩽ 3, where  S = O8+(2)
 
-Conj_rho := ConjugacyClass( O8_3, rho0 );;  
-Orbs := OrbitsDomain(  C_rho, Conj_rho );;   ## orbits of C(ρ) on the conjugacy class ρ^S 
-Size(Orbs); # 17                            
+Conj_rho := ConjugacyClass( O8_3, rho0 );;   ## the conjugacy class ρ^S 
+
+Orbs := OrbitsDomain(  C_rho, Conj_rho );;   ## orbits of C(ρ) on ρ^S
+Size(Orbs); # 17                             ## number of orbits
+
 List(Orbs,Size);                             ## sizes of orbits
 # [ 63, 56, 1512, 1512, 2016, 2016, 63, 2016, 
 #  56, 1512, 56, 1512, 63, 378, 1512, 56, 1 ]
 
 Set( Orbs, Orb -> Size( 
    Group( rho0, Representative( Orb ) ) ) );
-# [ 3, 9, 12, 24, 27, 72, 324, 3456 ]        ## sizes of 2-generated subgroups
+# [ 3, 9, 12, 24, 27, 72, 324, 3456 ]        ## sizes of 2-generated subgroups  < ρ, ρ^s >, s ∊ S
 
 ## Conclusion: Any two conjugates of ρ generate a {2,3}-subgroup of O8+(2):3
 ##             In particular, α_S(ρ) = 3, where  S = O8+(2)
@@ -118,7 +120,7 @@ Set( Orbs, Orb -> Size(
 
 tau := ( rho0 * x0^3 )^4;;                   ## τ 
 
-Order( tau );  # 3 
+Order( tau );  # 3                           ## |τ| = 3
 
 Size( Centralizer( O8, tau ) ); # 216        ## => τ is the required nontriality automorphism
 
@@ -138,7 +140,7 @@ Size( Group( tau, tau^x0 ) ); # 522547200    ## = |O8+(2):3|  =>  α_S(τ) ⩽ 2
 O8_S4 := AtlasGroup("O8+(3).S4");;           ## extension O8+(3):S_4
 
 Gens := GeneratorsOfGroup(O8_S4);;    
-x0 := Gens[1];; y0 := Gens[2];;
+x0 := Gens[1];; y0 := Gens[2];;              ## generators
 Order(x0); # 24
 Order(y0); # 20                        
 
@@ -160,6 +162,7 @@ Size( Group( x, y ) ); # 4952179814400       ## = |O8+(3)|  => x and y generate 
 rho := (x0*y0)^4 ;;                          ## ρ
 Order( rho ); # 3                            ## |ρ| = 3
 rho in O8;  # false                          ## ρ is outside O8+(3)
+
 C_rho := Centralizer( O8, rho );;            ## C_S(ρ), where S = O8+(3)
 Size( C_rho );  #  4245696                   ## = |G2(3)|  =>  ρ is indeed a triality automorphism of O8+(3)
 
