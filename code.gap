@@ -65,21 +65,24 @@ G := Group(x,y);;                            ##  O8+(2)  ( 8-dimensional represe
 
 StructureDescription(G); # "O+(8,2)"         ##  < x, y > is indeed O8+(2)
 
+xr in G; # true                              ##  confirming that
+yr in G; # true                              ##  xr, yr ∊ < x, y >  
+
 rho := GroupHomomorphismByImages( 
        G, G, [ x, y ], [ xr, yr ] );;        ## a triality automorphism of O8+(2) ( abstract )
 
 rho <> fail;  #  true                        ## confirming that the map  [ x, y ] -> [ xr, yr ] 
                                              ## indeed extends to an automorphism of O8+(2)                                            
 
-Order(rho); #  3                             ## |ρ| = 3   ( abstract automorphism )
+Order(rho); #  3                             ## |ρ| = 3   ( as an abstract automorphism )
 
 ## Constructing the induced 24-dimensional representation of O8+(2):3 :
 
-rho0 := KroneckerProduct(                    ## a triality automorphism ρ of O8+(2) 
-  PermutationMat( (1,2,3), 3, GF(2) ),       ## ( 24-dim permutation matrix ) 
+rho0 := KroneckerProduct(                    ## triality automorphism ρ of O8+(2) 
+  PermutationMat( (1,2,3), 3, GF(2) ),       ## ( a 24-dimensional permutation matrix ) 
   IdentityMat( 8, GF(2) ) );;                
 
-Order(rho0); # 3                             ## |ρ| = 3   ( 24-dim matrix )
+Order(rho0); # 3                             ## |ρ| = 3   ( as a 24-dimensional matrix )
 
 x0 := IdentityMat( 24, GF(2) );; 
 x0{[ 1.. 8]}{[ 1.. 8]} := x;;
@@ -91,10 +94,10 @@ y0{[ 1.. 8]}{[ 1.. 8]} := y;;
 y0{[ 9..16]}{[ 9..16]} := yr^rho;;
 y0{[17..24]}{[17..24]} := yr;;
 
-O8 := Group( x0,  y0 );;                     ## O8+(2) in its 24-dim representation
+O8 := Group( x0,  y0 );;                     ## O8+(2) in its 24-dimensional representation
 Size(O8);   #  174182400                     ## = |O8+(2)|
 
-O8_3 := Group( x0, y0, rho0 );;              ## O8+(2):3 in its 24-dim representation
+O8_3 := Group( x0, y0, rho0 );;              ## O8+(2):3 in its 24-dimensional representation
 Size(O8_3); #  522547200                     ## = |O8+(2):3|
 
 StructureDescription(O8_3); 
