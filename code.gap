@@ -71,7 +71,7 @@ rho := GroupHomomorphismByImages(
 rho <> fail;  #  true                        ## confirming that the map  [ x, y ] -> [ xr, yr ] 
                                              ## indeed extends to an automorphism of O8+(2)                                            
 
-Order(rho); #  3                             ## |ρ| = 3   ( abstract )
+Order(rho); #  3                             ## |ρ| = 3   ( abstract automorphism )
 
 ## Constructing the induced 24-dimensional representation of O8+(2):3 :
 
