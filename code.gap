@@ -5,7 +5,7 @@
 ## 
 ##  by Danila O. Revin and Andrei V. Zavarnitsine
 ##
-##  Date: July, 2025
+##  Date: 8 July, 2025
 
 ##  Every section of the following code can be copy-pasted into a working GAP session.
 ##  The output of a command is given after a single '#'. 
@@ -67,8 +67,9 @@ StructureDescription(G); # "O+(8,2)"         ##  < x, y > is indeed O8+(2)
 
 rho := GroupHomomorphismByImages( 
        G, G, [ x, y ], [ xr, yr ] );;        ## a triality automorphism of O8+(2) ( abstract )
-                                             ## The fact that this map indeed extends to an automorphism 
-                                             ## is checked within the function "GroupHomomorphismByImages"  
+
+rho <> fail;  #  true                        ## confirming that the map  [ x, y ] -> [ xr, yr ] 
+                                             ## indeed extends to an automorphism of O8+(2)                                            
 
 Order(rho); #  3                             ## |ρ| = 3   ( abstract )
 
