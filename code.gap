@@ -61,18 +61,24 @@ yr := [[1,0,0,0,0,0,0,0],
        [0,0,0,0,0,0,1,0],
        [0,0,0,0,0,0,0,1]]*Z(2)^0;;
 
-G := Group(x,y);;                             ##  O8+(2)  ( 8-dimensional representation )
+G := Group(x,y);;                            ##  O8+(2)  ( 8-dimensional representation )
+
+StructureDescription(G); # "O+(8,2)"         ##  < x, y > is indeed O8+(2)
 
 rho := GroupHomomorphismByImages( 
-       G, G, [ x, y ], [ xr, yr ] );;         ## a triality automorphism of O8+(2) ( abstract )
+       G, G, [ x, y ], [ xr, yr ] );;        ## a triality automorphism of O8+(2) ( abstract )
+                                             ## The fact that this map indeed extends to an automorphism 
+                                             ## is checked within the function "GroupHomomorphismByImages"  
+
+Order(rho); #  3                             ## |ρ| = 3   ( abstract )
 
 ## Constructing the induced 24-dimensional representation of O8+(2):3 :
 
-rho0 := KroneckerProduct( 
-  PermutationMat( (1,2,3), 3, GF(2) ), 
-  IdentityMat( 8, GF(2) ) );;                ## a triality automorphism ρ of O8+(2) ( 24-dim matrix )
+rho0 := KroneckerProduct(                    ## a triality automorphism ρ of O8+(2) 
+  PermutationMat( (1,2,3), 3, GF(2) ),       ## ( 24-dim permutation matrix ) 
+  IdentityMat( 8, GF(2) ) );;                
 
-Order(rho0); # 3                             ## |ρ| = 3 
+Order(rho0); # 3                             ## |ρ| = 3   ( 24-dim matrix )
 
 x0 := IdentityMat( 24, GF(2) );; 
 x0{[ 1.. 8]}{[ 1.. 8]} := x;;
