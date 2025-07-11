@@ -5,7 +5,7 @@
 ## 
 ##  by Danila O. Revin and Andrei V. Zavarnitsine
 ##
-##  Date: 8 July, 2025
+##  Date: 11 July, 2025
 
 ##  Every section of the following code can be copy-pasted into a working GAP session.
 ##  The output of a command is given after a single '#'. 
@@ -17,7 +17,7 @@
 ##  In this section, we construct a 24-dimensional representation 
 ##  for < S, ρ > over 𝔽_2, where ρ is a triality automorphism of S,
 ##  by inducing it from an 8-dimensional representation for S.
-##  Then prove that α_S(ρ) = 3 by finding the orders of subgroups generated 
+##  Then we prove that α_S(ρ) = 3 by finding the orders of subgroups generated 
 ##  by a pair of elements conjugate to ρ. We also show that α_S(τ) = 2, 
 ##  where τ ∊ Sρ has order 3 and is not conjugate to ρ.
 
