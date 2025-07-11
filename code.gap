@@ -120,7 +120,7 @@ List(Orbs,Size);                             ## sizes of orbits
 
 Set( Orbs, Orb -> Size( 
    Group( rho0, Representative( Orb ) ) ) );
-# [ 3, 9, 12, 24, 27, 72, 324, 3456 ]        ## sizes of 2-generated subgroups  < ρ, ρ^s >, s ∊ S
+# [ 3, 9, 12, 24, 27, 72, 324, 3456 ]        ## sizes of 2-generated subgroups  < ρ, ρ^g >, g ∊ S
 
 ## Conclusion: Any two conjugates of ρ generate a {2,3}-subgroup of O8+(2):3
 ##             In particular, α_S(ρ) = 3, where  S = O8+(2)
@@ -192,7 +192,7 @@ List( Orbs, Size );                          ## sizes of orbits
 
 Set( Orbs, Orb -> Size( 
      Group( rho, Representative( Orb ) ) ) );
-# [ 3, 9, 12, 24, 27, 72, 243, 324, 3456 ]   ## sizes of 2-generated subgroups
+# [ 3, 9, 12, 24, 27, 72, 243, 324, 3456 ]   ## sizes of 2-generated subgroups < ρ, ρ^g >, g ∊ S
 
 ## Conclusion: Any two conjugates of ρ generate a {2,3}-subgroup of O8+(3):3
 ##             In particular, α_S(ρ) = 3, where  S = O8+(3)
