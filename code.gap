@@ -132,7 +132,7 @@ tau := ( rho0 * x0^3 )^4;;                   ## τ
 
 Order( tau );  # 3                           ## |τ| = 3
 
-Size( Centralizer( O8, tau ) ); # 216        ## => τ is the required nontriality automorphism
+Size( Centralizer( O8, tau ) ); # 216        ## = |PGU(3,2)|  =>  τ is the required nontriality automorphism
 
 Size( Group( tau, tau^x0 ) ); # 522547200    ## = |O8+(2):3|  =>  α_S(τ) ⩽ 2
                                              ## Clearly, we also have  α_S(τ) ⩾ 2 
@@ -179,7 +179,7 @@ C_rho := Centralizer( O8, rho );;            ## C_S(ρ), where S = O8+(3)
 Size( C_rho );  #  4245696                   ## = |G2(3)|  =>  ρ is indeed a triality automorphism of O8+(3)
 
 O8_3 := Group( rho, rho^x, rho^y );;
-Size( O8_3 ); #  14856539443200              ## = |O8+(3):3| => this is indeed O8+(3):3
+Size( O8_3 ); #  14856539443200              ## = |O8+(3):3|  =>  this is indeed O8+(3):3
                                              ## This also confirms that  α_S(ρ) ⩽ 3, where S = O8+(3)
 
 Conj_rho := ConjugacyClass( O8_3, rho );;
@@ -206,10 +206,10 @@ tau := (rho * x^4 * y)^4;;                   ## τ
 Order(tau);   # 3                            ## |τ| = 3
 
 C_tau := Centralizer(O8, tau);;
-Size(C_tau); # 5832                          ## => τ is the required nontriality automorphism
+Size(C_tau); # 5832                          ## = |[3^5].SL(2,3)|  =>  τ is the required nontriality automorphism
 
 Size( Group( tau, tau^x ) ); 
-# 14856539443200                             ## = |O8+(3):3| =>  α_S(τ) ⩽ 2
+# 14856539443200                             ## = |O8+(3):3|  =>  α_S(τ) ⩽ 2
                                              ## Clearly, we also have  α_S(τ) ⩾ 2 
 
 ## Conclusion: α_S(τ) = 2,  where S = O8+(3)
