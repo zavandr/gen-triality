@@ -1,7 +1,8 @@
 ###
 ##  This file contains explicit 24 x 24 - matrices x, y, r, s over GF(2) in GAP's format
 ##  that generate the extension O8+(2):S3, where S3 = < r, s > is a group of graph 
-##  (triality) automorphisms of O8+(2) = < x, y > and |r| = 3, |s| = 2
+##  (triality) automorphisms of O8+(2) = < x, y >,
+##  |r| = 3, and |s| = 2.
 ## 
 
 x := [
