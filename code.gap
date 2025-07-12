@@ -104,7 +104,7 @@ StructureDescription(O8_3);
 # "O+(8,2) : C3"                             ## the required structure
 
 C_rho := Centralizer( O8, rho0 );;           
-Size( C_rho );   # 12096                     ## = |G2(2)|  =>  ρ is indeed the triality automorphism 
+Size( C_rho );   # 12096                     ## = |G2(2)|  =>  ρ is indeed a triality automorphism 
 
 Group( rho0, rho0^x0, rho0^y0 ) = O8_3; 
 # true                                       ## This confirms that α_S(ρ) ⩽ 3, where  S = O8+(2)
