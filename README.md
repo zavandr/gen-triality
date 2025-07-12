@@ -10,9 +10,7 @@ We also make available in this [file](Generators_O8(2)S3.txt) generators  <i>x, 
 
 as explicit  24 x 24 - matrices over the field F<sub>2</sub> with two elements given in GAP's format, 
 
-where S<sub>3</sub> = < <i>r, s</i> > is a group of graph (triality) automorphisms of O<sub>8</sub><sup>+</sup>(2) = < <i>x, y</i> >,
-
-|<i>r</i>| = 3, and |<i>s</i>| = 2.
+where S<sub>3</sub> = < <i>r, s</i> > is a group of graph (triality) automorphisms of O<sub>8</sub><sup>+</sup>(2) = < <i>x, y</i> > with |<i>r</i>| = 3, and |<i>s</i>| = 2.
 
 The notation O<sub>8</sub><sup>+</sup>(2) follows that of the [ATLAS of Finite Groups ](https://en.wikipedia.org/wiki/ATLAS_of_Finite_Groups)
 and means 
