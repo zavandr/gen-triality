@@ -112,15 +112,56 @@ Group( rho0, rho0^x0, rho0^y0 ) = O8_3;
 Conj_rho := ConjugacyClass( O8_3, rho0 );;   ## the conjugacy class ρ^S 
 
 Orbs := OrbitsDomain(  C_rho, Conj_rho );;   ## orbits of C(ρ) on ρ^S
-Size(Orbs); # 17                             ## number of orbits
+
+NOrbs := Size(Orbs); # 17                    ## number of orbits
 
 List(Orbs,Size);                             ## sizes of orbits
 # [ 63, 56, 1512, 1512, 2016, 2016, 63, 2016, 
 #  56, 1512, 56, 1512, 63, 378, 1512, 56, 1 ]
 
-Set( Orbs, Orb -> Size( 
-   Group( rho0, Representative( Orb ) ) ) );
-# [ 3, 9, 12, 24, 27, 72, 324, 3456 ]        ## sizes of 2-generated subgroups  < ρ, ρ^g >, g ∊ S
+2Groups := List( Orbs, o -> 
+        Group( rho0, Representative(o) ) );; ## 2-generated subgroups < ρ, ρ^s >, s ∊ S
+
+for n in [1..NOrbs] do                       ## printing information about these subgroups to justify 
+   Gr2 := 2Groups[n];                        ## the contents of Table \ref{rrgen} of the paper for S = O8+(2)
+   Sz2 := Size(Gr2);
+   if IdGroupsAvailable(Sz2) then Print( " ID = ", IdGroup(Gr2) ); 
+                             else Print( " Size = ", Sz2 );
+   fi;
+   Print(" Size factored = ", Collected( Factors(Sz2) ),
+         " Orbit size = "   , Size( Orbs[n] ), 
+         " Structure : "    , StructureDescription( Gr2 ), "\n" );
+od;
+
+# ID = [ 12, 3 ]    Size factored = [ [ 2, 2 ], [ 3, 1 ] ] Orbit size = 63   Structure : A4
+# ID = [ 27, 3 ]    Size factored = [ [ 3, 3 ] ]           Orbit size = 56   Structure : (C3 x C3) : C3
+# ID = [ 24, 3 ]    Size factored = [ [ 2, 3 ], [ 3, 1 ] ] Orbit size = 1512 Structure : SL(2,3)
+# Size = 3456       Size factored = [ [ 2, 7 ], [ 3, 3 ] ] Orbit size = 1512 Structure : (((C2 x ((C4 x C2) : C2)) : C2) : C2) : ((C3 x C3) : C3)
+# ID = [ 324, 160 ] Size factored = [ [ 2, 2 ], [ 3, 4 ] ] Orbit size = 2016 Structure : ((C3 x C3 x C3) : (C2 x C2)) : C3
+# ID = [ 324, 160 ] Size factored = [ [ 2, 2 ], [ 3, 4 ] ] Orbit size = 2016 Structure : ((C3 x C3 x C3) : (C2 x C2)) : C3
+# ID = [ 12, 3 ]    Size factored = [ [ 2, 2 ], [ 3, 1 ] ] Orbit size = 63   Structure : A4
+# ID = [ 324, 160 ] Size factored = [ [ 2, 2 ], [ 3, 4 ] ] Orbit size = 2016 Structure : ((C3 x C3 x C3) : (C2 x C2)) : C3
+# ID = [ 27, 3 ]    Size factored = [ [ 3, 3 ] ]           Orbit size = 56   Structure : (C3 x C3) : C3
+# Size = 3456       Size factored = [ [ 2, 7 ], [ 3, 3 ] ] Orbit size = 1512 Structure : (((C2 x ((C4 x C2) : C2)) : C2) : C2) : ((C3 x C3) : C3)
+# ID = [ 9, 2 ]     Size factored = [ [ 3, 2 ] ]           Orbit size = 56   Structure : C3 x C3
+# ID = [ 72, 25 ]   Size factored = [ [ 2, 3 ], [ 3, 2 ] ] Orbit size = 1512 Structure : C3 x SL(2,3)
+# ID = [ 12, 3 ]    Size factored = [ [ 2, 2 ], [ 3, 1 ] ] Orbit size = 63   Structure : A4
+# ID = [ 24, 3 ]    Size factored = [ [ 2, 3 ], [ 3, 1 ] ] Orbit size = 378  Structure : SL(2,3)
+# Size = 3456       Size factored = [ [ 2, 7 ], [ 3, 3 ] ] Orbit size = 1512 Structure : (((C2 x ((C4 x C2) : C2)) : C2) : C2) : ((C3 x C3) : C3)
+# ID = [ 27, 3 ]    Size factored = [ [ 3, 3 ] ]           Orbit size = 56   Structure : (C3 x C3) : C3
+# ID = [ 3, 1 ]     Size factored = [ [ 3, 1 ] ]           Orbit size = 1    Structure : C3
+
+## checking the isomorphism of the three types of subgroups of order 3456 
+## ( as no GAP ID is available for them )
+
+2Groups_3456 := Filtered( 2Groups, G -> 
+                         Size( G ) = 3456 );;
+Size( 2Groups_3456 ); # 3                     ## the three types of subgroups of order 3456 
+
+IsomorphismGroups( 2Groups_3456[1], 2Groups_3456[2] ) <> fail;   # true    ## isomorphism found
+IsomorphismGroups( 2Groups_3456[1], 2Groups_3456[3] ) <> fail;   # true    ## isomorphism found
+
+##  =>  all three types of subgroups of order 3456 are isomorphic 
 
 ## Conclusion: Any two conjugates of ρ generate a {2,3}-subgroup of O8+(2):3
 ##             In particular, α_S(ρ) = 3, where  S = O8+(2)
@@ -184,11 +225,58 @@ Size( O8_3 ); #  14856539443200              ## = |O8+(3):3|  =>  this is indeed
 
 Conj_rho := ConjugacyClass( O8_3, rho );;
 Orbs := OrbitsDomain(  C_rho, Conj_rho );;   ## orbits of C(ρ) on the conjugacy class ρ^S 
-Size( Orbs ); # 18
+
+NOrbs := Size(Orbs);  # 18                   ## number of orbits 
+
 List( Orbs, Size );                          ## sizes of orbits
 # [ 78624, 176904, 157248, 78624, 78624, 
 #  176904, 176904, 176904, 44226, 17472, 
 #  728, 728, 351, 728, 351, 728, 351, 1 ]
+
+2Groups := List( Orbs, o -> 
+         Group( rho, Representative(o) ) );; ## 2-generated subgroups < ρ, ρ^s >, s ∊ S
+
+for n in [1..NOrbs] do                       ## printing information about these subgroups to justify 
+   Gr2 := 2Groups[n];                        ## the contents of Table \ref{rrgen} of the paper for S = O8+(3)
+   Sz2 := Size(Gr2);
+   if IdGroupsAvailable(Sz2) then Print( " ID = ", IdGroup(Gr2) ); 
+                             else Print( " Size = ", Sz2 );
+   fi;
+   Print(" Size factored = ", Collected( Factors(Sz2) ),
+         " Orbit size = "   , Size( Orbs[n] ), 
+         " Structure : "    , StructureDescription( Gr2 ), "\n" );
+od;
+
+# ID = [ 324, 160 ] Size factored = [ [ 2, 2 ], [ 3, 4 ] ] Orbit size = 78624  Structure : ((C3 x C3 x C3) : (C2 x C2)) : C3
+# Size = 3456       Size factored = [ [ 2, 7 ], [ 3, 3 ] ] Orbit size = 176904 Structure : (((C2 x ((C4 x C2) : C2)) : C2) : C2) : ((C3 x C3) : C3)
+# ID = [ 243, 3 ]   Size factored = [ [ 3, 5 ] ]           Orbit size = 157248 Structure : (C3 x ((C3 x C3) : C3)) : C3
+# ID = [ 324, 160 ] Size factored = [ [ 2, 2 ], [ 3, 4 ] ] Orbit size = 78624  Structure : ((C3 x C3 x C3) : (C2 x C2)) : C3
+# ID = [ 324, 160 ] Size factored = [ [ 2, 2 ], [ 3, 4 ] ] Orbit size = 78624  Structure : ((C3 x C3 x C3) : (C2 x C2)) : C3
+# ID = [ 72, 25 ]   Size factored = [ [ 2, 3 ], [ 3, 2 ] ] Orbit size = 176904 Structure : C3 x SL(2,3)
+# Size = 3456       Size factored = [ [ 2, 7 ], [ 3, 3 ] ] Orbit size = 176904 Structure : ((C2 x ((C2 x Q8) : C2)) : C2) : ((C3 x C3) : C3)
+# Size = 3456       Size factored = [ [ 2, 7 ], [ 3, 3 ] ] Orbit size = 176904 Structure : ((((C2 x C2 x C2) : (C2 x C2)) : C2) : C2) : ((C3 x C3) : C3)
+# ID = [ 24, 3 ]    Size factored = [ [ 2, 3 ], [ 3, 1 ] ] Orbit size = 44226  Structure : SL(2,3)
+# ID = [ 27, 3 ]    Size factored = [ [ 3, 3 ] ]           Orbit size = 17472  Structure : (C3 x C3) : C3
+# ID = [ 27, 3 ]    Size factored = [ [ 3, 3 ] ]           Orbit size = 728    Structure : (C3 x C3) : C3
+# ID = [ 9, 2 ]     Size factored = [ [ 3, 2 ] ]           Orbit size = 728    Structure : C3 x C3
+# ID = [ 12, 3 ]    Size factored = [ [ 2, 2 ], [ 3, 1 ] ] Orbit size = 351    Structure : A4
+# ID = [ 27, 3 ]    Size factored = [ [ 3, 3 ] ]           Orbit size = 728    Structure : (C3 x C3) : C3
+# ID = [ 12, 3 ]    Size factored = [ [ 2, 2 ], [ 3, 1 ] ] Orbit size = 351    Structure : A4
+# ID = [ 27, 3 ]    Size factored = [ [ 3, 3 ] ]           Orbit size = 728    Structure : (C3 x C3) : C3
+# ID = [ 12, 3 ]    Size factored = [ [ 2, 2 ], [ 3, 1 ] ] Orbit size = 351    Structure : A4
+# ID = [ 3, 1 ]     Size factored = [ [ 3, 1 ] ]           Orbit size = 1      Structure : C3
+
+## checking the isomorphism of the three types of subgroups of order 3456 
+## ( as no GAP ID is available for them )
+
+2Groups_3456 := Filtered( 2Groups, G -> 
+                         Size( G ) = 3456 );;
+Size( 2Groups_3456 ); # 3                     ## the three types of subgroups of order 3456 
+
+IsomorphismGroups( 2Groups_3456[1], 2Groups_3456[2] ) <> fail;   # true    ## isomorphism found
+IsomorphismGroups( 2Groups_3456[1], 2Groups_3456[3] ) <> fail;   # true    ## isomorphism found
+
+##  =>  all three types of subgroups of order 3456 are isomorphic 
 
 Set( Orbs, Orb -> Size( 
      Group( rho, Representative( Orb ) ) ) );
