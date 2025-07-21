@@ -5,7 +5,7 @@
 ## 
 ##  by Danila O. Revin and Andrei V. Zavarnitsine
 ##
-##  Date: 11 July, 2025
+##  Date: 21 July, 2025
 
 ##  Every section of the following code can be copy-pasted into a working GAP session.
 ##  The output of a command is given after a single '#'. 
@@ -123,7 +123,7 @@ List(Orbs,Size);                             ## sizes of orbits
         Group( rho0, Representative(o) ) );; ## 2-generated subgroups < ρ, ρ^s >, s ∊ S
 
 for n in [1..NOrbs] do                       ## printing information about these subgroups to justify 
-   Gr2 := 2Groups[n];                        ## the contents of Table \ref{rrgen} of the paper for S = O8+(2)
+   Gr2 := 2Groups[n];                        ## the contents of Table 3 of the paper for S = O8+(2)
    Sz2 := Size(Gr2);
    if IdGroupsAvailable(Sz2) then Print( " ID = ", IdGroup(Gr2) ); 
                              else Print( " Size = ", Sz2 );
@@ -237,7 +237,7 @@ List( Orbs, Size );                          ## sizes of orbits
          Group( rho, Representative(o) ) );; ## 2-generated subgroups < ρ, ρ^s >, s ∊ S
 
 for n in [1..NOrbs] do                       ## printing information about these subgroups to justify 
-   Gr2 := 2Groups[n];                        ## the contents of Table \ref{rrgen} of the paper for S = O8+(3)
+   Gr2 := 2Groups[n];                        ## the contents of Table 3 of the paper for S = O8+(3)
    Sz2 := Size(Gr2);
    if IdGroupsAvailable(Sz2) then Print( " ID = ", IdGroup(Gr2) ); 
                              else Print( " Size = ", Sz2 );
