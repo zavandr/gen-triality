@@ -1,5 +1,5 @@
 ###
-##  This code for GAP ( version 4.14.0 of 2024-12-05 ) accompanies the paper
+##  This code for GAP ( version ⩾ 4.14.0 of 2024-12-05 ) accompanies the paper
 ##  
 ##  "On generation by triality automorphisms"
 ## 
