@@ -66,7 +66,7 @@ G := Group(x,y);;                            ##  O8+(2)  ( 8-dimensional represe
 StructureDescription(G); # "O+(8,2)"         ##  < x, y > is indeed O8+(2)
 
 xr in G; # true                              ##  confirming that
-yr in G; # true                              ##  xr, yr ∊ < x, y >  
+yr in G; # true                              ##  xr, yr  are in  < x, y >  
 
 rho := GroupHomomorphismByImages( 
        G, G, [ x, y ], [ xr, yr ] );;        ## a triality automorphism of O8+(2) ( abstract )
@@ -120,7 +120,7 @@ List(Orbs,Size);                             ## sizes of orbits
 #  56, 1512, 56, 1512, 63, 378, 1512, 56, 1 ]
 
 2Groups := List( Orbs, o -> 
-        Group( rho0, Representative(o) ) );; ## 2-generated subgroups < ρ, ρ^s >, s ∊ S
+        Group( rho0, Representative(o) ) );; ## 2-generated subgroups < ρ, ρ^s >, s in S
 
 for n in [1..NOrbs] do                       ## printing information about these subgroups to justify 
    Gr2 := 2Groups[n];                        ## the contents of Table 3 of the paper for S = O8+(2)
@@ -234,7 +234,7 @@ List( Orbs, Size );                          ## sizes of orbits
 #  728, 728, 351, 728, 351, 728, 351, 1 ]
 
 2Groups := List( Orbs, o -> 
-         Group( rho, Representative(o) ) );; ## 2-generated subgroups < ρ, ρ^s >, s ∊ S
+         Group( rho, Representative(o) ) );; ## 2-generated subgroups < ρ, ρ^s >, s in S
 
 for n in [1..NOrbs] do                       ## printing information about these subgroups to justify 
    Gr2 := 2Groups[n];                        ## the contents of Table 3 of the paper for S = O8+(3)
@@ -280,7 +280,7 @@ IsomorphismGroups( 2Groups_3456[1], 2Groups_3456[3] ) <> fail;   # true    ## is
 
 Set( Orbs, Orb -> Size( 
      Group( rho, Representative( Orb ) ) ) );
-# [ 3, 9, 12, 24, 27, 72, 243, 324, 3456 ]   ## sizes of 2-generated subgroups < ρ, ρ^g >, g ∊ S
+# [ 3, 9, 12, 24, 27, 72, 243, 324, 3456 ]   ## sizes of 2-generated subgroups < ρ, ρ^g >, g in S
 
 ## Conclusion: Any two conjugates of ρ generate a {2,3}-subgroup of O8+(3):3
 ##             In particular, α_S(ρ) = 3, where  S = O8+(3)
