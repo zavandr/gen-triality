@@ -1,5 +1,8 @@
 # On generation by triality automorphisms 
-[GAP](https://www.gap-system.org/) code accompanying a paper with the same title
+[GAP](https://www.gap-system.org/) code accompanying the paper entitled
+
+*On the solvable analogue of the Baer--Suzuki theorem and generation by conjugate trialities*
+
 by Danila O. Revin and Andrei V. Zavarnitsine.
 
 The code is in [this file](code.gap).
