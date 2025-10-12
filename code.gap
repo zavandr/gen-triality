@@ -1,11 +1,11 @@
 ###
 ##  This code for GAP ( version ⩾ 4.14.0 of 2024-12-05 ) accompanies the paper
 ##  
-##  "On generation by triality automorphisms"
+##  "On the solvable analogue of the Baer-Suzuki theorem and generation by conjugate trialities"
 ## 
 ##  by Danila O. Revin and Andrei V. Zavarnitsine
 ##
-##  Date: 21 July, 2025
+##  Date: October 12, 2025
 
 ##  Every section of the following code can be copy-pasted into a working GAP session.
 ##  The output of a command is given after a single '#'. 
